@@ -1,5 +1,5 @@
 import { AUTO_LANGUAGE } from '../constants'
-import { type Language, type Action, type State } from '../types.d'
+import { type FromLanguage, type Language, type Action, type State } from '../types.d'
 import { useReducer } from 'react'
 
 // 1. Create a initialState
@@ -16,29 +16,49 @@ function reducer (state: State, action: Action) {
   const { type } = action
 
   if (type === 'INTERCHANGE_LANGUAGES') {
+    // lógica del estado dentro del reducer
+    // porque lo evitamos en los componentes
     if (state.fromLanguage === AUTO_LANGUAGE) return state
+
+    const loading = state.fromText !== ''
+
     return {
       ...state,
+      loading,
+      result: '',
       fromLanguage: state.toLanguage,
       toLanguage: state.fromLanguage
     }
   }
+
   if (type === 'SET_FROM_LANGUAGE') {
+    if (state.fromLanguage === action.payload) return state
+
+    const loading = state.fromText !== ''
+
     return {
       ...state,
-      fromLanguage: action.payload
+      fromLanguage: action.payload,
+      result: '',
+      loading
     }
   }
   if (type === 'SET_TO_LANGUAGE') {
+    if (state.toLanguage === action.payload) return state
+    const loading = state.fromText !== ''
+
     return {
       ...state,
-      toLanguage: action.payload
+      toLanguage: action.payload,
+      result: '',
+      loading
     }
   }
   if (type === 'SET_FROM_TEXT') {
+    const loading = action.payload !== ''
     return {
       ...state,
-      loading: true,
+      loading,
       fromText: action.payload,
       result: ''
     }
@@ -66,7 +86,7 @@ export function useStore () {
   const interchangeLanguages = () => {
     dispatch({ type: 'INTERCHANGE_LANGUAGES' })
   }
-  const setFromLanguage = (payload: Language) => {
+  const setFromLanguage = (payload: FromLanguage) => {
     dispatch({ type: 'SET_FROM_LANGUAGE', payload })
   }
   const setToLanguage = (payload: Language) => {
