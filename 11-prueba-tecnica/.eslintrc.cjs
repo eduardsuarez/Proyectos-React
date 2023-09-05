@@ -32,5 +32,6 @@ module.exports = {
         ' @typescript-eslint/explicit-function-return-type': 'off',
         'react/react-in-jsx-scope': 'off',
         '@typescript-eslint/explicit-function-return-type': 'off',
+        '@typescript-eslint/method-signature-style': 'off',
     }
 }

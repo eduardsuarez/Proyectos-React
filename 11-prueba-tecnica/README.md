@@ -6,14 +6,14 @@ https://randomuser.me/.
 
 Here are the steps to follow:
 
-- [] Fetch 100 rows of data using the API.
-- [] Display the data in a table format, similar to the example.
-- [] Provide the option to color rows as show in the example.
-- [] Allow the data to be sorted by countryas demostrated in the example.
-- [] enable the ability to delete a row as show in the example.
-- [] Implement a feature that allows the user to restore the initial state, meaning that
+- [x] Fetch 100 rows of data using the API.
+- [x] Display the data in a table format, similar to the example.
+- [x] Provide the option to color rows as show in the example.
+- [x] Allow the data to be sorted by countryas demostrated in the example.
+- [x] enable the ability to delete a row as show in the example.
+- [x] Implement a feature that allows the user to restore the initial state, meaning that
 all deleted rows will be recovered.
-- [] Handle any potencial errors that may occur.
+- [x] Handle any potencial errors that may occur.
 - [] Implement a feature that allows the user to filter the data by country.
 - [] Avoid sorting users again the data when he user is changing filter by country.
 - [] Sort by clicking on the column header.
